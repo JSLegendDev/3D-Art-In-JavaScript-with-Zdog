@@ -9,13 +9,24 @@ let house = new Zdog.Anchor({
     addTo: illustration
 })
 
+let redHouse = new Zdog.Anchor({
+    addTo: illustration,
+    rotate: {y: -TAU/4},
+    translate: {x: -110}
+})
+
 let greenHouse = {
     lightColor: '#45a771',
     darkColor: '#164541',
     roofColor: '#0A0408'
 }
 
-function makeHouse(parent, lightColor, darkColor, roofColor) {
+function makeHouse(
+    parent, 
+    lightColor, 
+    darkColor, 
+    roofColor
+) {
     new Zdog.Box({
         addTo: parent,
         width: 120,
@@ -93,6 +104,13 @@ makeHouse(
     greenHouse.lightColor, 
     greenHouse.darkColor,
     greenHouse.roofColor
+)
+
+makeHouse(
+    redHouse,
+    '#E73934',
+    '#8C110C',
+    '#0A0408'
 )
 
 function animate() {
