@@ -9,76 +9,91 @@ let house = new Zdog.Anchor({
     addTo: illustration
 })
 
-new Zdog.Box({
-    addTo: house,
-    width: 120,
-    height: 100,
-    depth: 80,
-    color: '#45A771',
-    rearFace: '#164541',
-    leftFace: '#164541'
-})
+let greenHouse = {
+    lightColor: '#45a771',
+    darkColor: '#164541',
+    roofColor: '#0A0408'
+}
 
-new Zdog.Polygon({
-    addTo: house,
-    sides: 3,
-    fill: true,
-    color: '#164541',
-    radius: 46,
-    translate: {y: -68, x: -60, z: 0},
-    rotate: {y: TAU/4}
-})
+function makeHouse(parent, lightColor, darkColor, roofColor) {
+    new Zdog.Box({
+        addTo: parent,
+        width: 120,
+        height: 100,
+        depth: 80,
+        color: lightColor,
+        rearFace: darkColor,
+        leftFace: darkColor
+    })
+    
+    new Zdog.Polygon({
+        addTo: parent,
+        sides: 3,
+        fill: true,
+        color: darkColor,
+        radius: 46,
+        translate: {y: -68, x: -60, z: 0},
+        rotate: {y: TAU/4}
+    })
+    
+    new Zdog.Polygon({
+        addTo: parent,
+        sides: 3,
+        fill: true,
+        color: lightColor,
+        radius: 46,
+        translate: {y: -68, x: 60, z: 0},
+        rotate: {y: TAU/4}
+    })
+    
+    new Zdog.Rect({
+        addTo: parent,
+        width: 120,
+        height: 72,
+        stroke: 4,
+        fill: true,
+        color: roofColor,
+        translate: {y: -81, z: 20},
+        rotate: {x: TAU/12}
+    })
+    
+    new Zdog.Rect({
+        addTo: parent,
+        width: 120,
+        height: 72,
+        stroke: 4,
+        fill: true,
+        color: roofColor,
+        translate: {y: -81, z: -20},
+        rotate: {x: -TAU/12}
+    })
+    
+    new Zdog.Rect({
+        addTo: parent,
+        width: 20,
+        height: 20,
+        fill: true,
+        color: roofColor,
+        translate: {y: -3, z: -42}
+    })
+    
+    new Zdog.Rect({
+        addTo: parent,
+        width: 20,
+        height: 20,
+        fill: true,
+        color: darkColor,
+        rotate: {y: TAU/4},
+        translate: {y: -3, z: 0, x: 62}
+    })
+}
 
-new Zdog.Polygon({
-    addTo: house,
-    sides: 3,
-    fill: true,
-    color: '#45a771',
-    radius: 46,
-    translate: {y: -68, x: 60, z: 0},
-    rotate: {y: TAU/4}
-})
-
-new Zdog.Rect({
-    addTo: house,
-    width: 120,
-    height: 72,
-    stroke: 4,
-    fill: true,
-    color: '#0A0408',
-    translate: {y: -81, z: 20},
-    rotate: {x: TAU/12}
-})
-
-new Zdog.Rect({
-    addTo: house,
-    width: 120,
-    height: 72,
-    stroke: 4,
-    fill: true,
-    color: '#0A0408',
-    translate: {y: -81, z: -20},
-    rotate: {x: -TAU/12}
-})
-
-new Zdog.Rect({
-    addTo: house,
-    width: 20,
-    height: 20,
-    fill: true,
-    color: '#45a771',
-    translate: {y: -3, z: -42}
-})
-
-new Zdog.Rect({
-    addTo: house,
-    width: 20,
-    height: 20,
-    fill: true,
-    color: '#164541',
-    rotate: {y: TAU/4},
-    translate: {y: -3, z: 0, x: 62}
-})
+makeHouse(
+    house, 
+    greenHouse.lightColor, 
+    greenHouse.darkColor,
+    greenHouse.roofColor
+)
 
 function animate() {
     illustration.updateRenderGraph()
