@@ -5,20 +5,32 @@ let illustration = new Zdog.Illustration({
     dragRotate: true
 })
 
-let house = new Zdog.Anchor({
+let greenHouse = new Zdog.Anchor({
     addTo: illustration
 })
 
 let redHouse = new Zdog.Anchor({
     addTo: illustration,
     rotate: {y: -TAU/4},
-    translate: {x: -110}
+    translate: {x: -200}
 })
 
-let greenHouse = {
-    lightColor: '#45a771',
-    darkColor: '#164541',
-    roofColor: '#0A0408'
+let orangeHouse = new Zdog.Anchor({
+    addTo: illustration,
+    rotate: {y: -TAU/8},
+    translate: {x: 200}
+})
+
+let greenHouseColors = {
+    lightColor: '#8FD4B1',
+    darkColor: '#41918F',
+    roofColor: '#341F32'
+}
+
+let orangeHouseColors = {
+    lightColor: '#F88B33',
+    darkColor: '#C4521B',
+    roofColor: '#351F31'
 }
 
 function makeHouse(
@@ -99,19 +111,43 @@ function makeHouse(
     })
 }
 
+function makeTree(parent, color) {
+    let tree = new Zdog.Anchor({
+        addTo: parent,
+        translate: {y: 0, z: 100},
+        rotate: {x: TAU/4}
+    })
+
+    new Zdog.Cone({
+        addTo: tree,
+        diameter: 50,
+        length: 90,
+        color,
+    })
+}
+
 makeHouse(
-    house, 
-    greenHouse.lightColor, 
-    greenHouse.darkColor,
-    greenHouse.roofColor
+    greenHouse, 
+    greenHouseColors.lightColor, 
+    greenHouseColors.darkColor,
+    greenHouseColors.roofColor
 )
 
 makeHouse(
     redHouse,
-    '#E73934',
-    '#8C110C',
-    '#0A0408'
+    '#F67F8C',
+    '#C33A5A',
+    '#341F32'
 )
+
+makeHouse(
+    orangeHouse,
+    orangeHouseColors.lightColor,
+    orangeHouseColors.darkColor,
+    orangeHouseColors.roofColor
+)
+
+makeTree(illustration, '#B69C7A')
 
 function animate() {
     illustration.updateRenderGraph()
