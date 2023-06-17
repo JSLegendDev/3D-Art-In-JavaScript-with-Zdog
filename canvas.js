@@ -6,7 +6,7 @@ let illustration = new Zdog.Illustration({
     dragRotate: true,
     rotate: {x: -TAU/10, y: TAU/3},
     onDragStart: function() {
-        isSpinning = false;
+        isSpinning = false
     },
     resize: 'fullscreen'
 })
