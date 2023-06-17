@@ -1,6 +1,6 @@
 export const TAU = Zdog.TAU
 
-export function makeHouse(
+export function House(
     parent, 
     lightColor, 
     darkColor, 
@@ -87,7 +87,16 @@ export function makeHouse(
     })
 }
 
-export function makeTree(parent, color, trunkColor, x, y, z) {
+export function Tree(parent, colorName, x, y, z) {
+    const trunkColor = '#9e5132'
+    const colors = {
+        'red': '#900C3F',
+        'pink': '#c05770',
+        'yellow': '#fdc748'
+    }
+
+    const color = colors[colorName] ?? colors['red']
+    
     let tree = new Zdog.Anchor({
         addTo: parent,
         translate: {x, y, z},

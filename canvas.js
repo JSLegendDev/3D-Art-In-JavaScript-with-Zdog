@@ -1,4 +1,4 @@
-import { TAU, makeHouse, makeTree } from "./components.js";
+import { TAU, House, Tree } from "./components.js";
 
 let isSpinning = true
 let illustration = new Zdog.Illustration({
@@ -11,7 +11,7 @@ let illustration = new Zdog.Illustration({
 })
 
 // green house
-makeHouse(
+House(
     illustration, 
     '#8FD4B1', 
     '#41918F',
@@ -21,7 +21,7 @@ makeHouse(
 )
 
 // red house
-makeHouse(
+House(
     illustration,
     '#F67F8C',
     '#C33A5A',
@@ -31,7 +31,7 @@ makeHouse(
 )
 
 // orange house
-makeHouse(
+House(
     illustration,
     '#F88B33',
     '#C4521B',
@@ -40,37 +40,33 @@ makeHouse(
     0
 )
 
-makeTree(
+Tree(
     illustration,
-    '#900C3F', 
-    '#9e5132',
+    'red',
     0,
     0,
     100
 )
 
-makeTree(
+Tree(
     illustration,
-    '#c05770',
-    '#9e5132',
+    'pink',
     -100,
     0,
     150
 )
 
-makeTree(
+Tree(
     illustration,
-    '#c05770',
-    '#9e5132',
+    'pink',
     -100,
     0,
     -200
 )
 
-makeTree(
+Tree(
     illustration,
-    '#fdc748',
-    '#9e5132',
+    'yellow',
     -300,
     0,
     -200
