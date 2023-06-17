@@ -1,8 +1,12 @@
 const TAU = Zdog.TAU
-
+let isSpinning = true
 let illustration = new Zdog.Illustration({
     element: '.zdog-canvas',
-    dragRotate: true
+    dragRotate: true,
+    rotate: {x: -TAU/10, y: TAU/3},
+    onDragStart: function() {
+        isSpinning = false;
+    }
 })
 
 let greenHouse = new Zdog.Anchor({
@@ -46,14 +50,14 @@ function makeHouse(
         depth: 80,
         color: lightColor,
         rearFace: darkColor,
-        leftFace: darkColor
+        frontFace: darkColor
     })
     
     new Zdog.Polygon({
         addTo: parent,
         sides: 3,
         fill: true,
-        color: darkColor,
+        color: lightColor,
         radius: 46,
         translate: {y: -68, x: -60, z: 0},
         rotate: {y: TAU/4}
@@ -111,10 +115,10 @@ function makeHouse(
     })
 }
 
-function makeTree(parent, color) {
+function makeTree(parent, color, trunkColor, x, y, z) {
     let tree = new Zdog.Anchor({
         addTo: parent,
-        translate: {y: 0, z: 100},
+        translate: {x, y, z},
         rotate: {x: TAU/4}
     })
 
@@ -123,6 +127,22 @@ function makeTree(parent, color) {
         diameter: 50,
         length: 90,
         color,
+    })
+
+    new Zdog.Hemisphere({
+        addTo: tree,
+        diameter: 50,
+        color,
+        rotate: {y: TAU/2},
+        translate: {z: 0}
+    })
+
+    new Zdog.Cylinder({
+        addTo: tree,
+        diameter: 10,
+        length: 27,
+        color: trunkColor,
+        translate: {z: -35}
     })
 }
 
@@ -147,9 +167,47 @@ makeHouse(
     orangeHouseColors.roofColor
 )
 
-makeTree(illustration, '#B69C7A')
+makeTree(
+    illustration,
+    '#900C3F', 
+    '#9e5132',
+    0,
+    0,
+    100
+)
+
+makeTree(
+    illustration,
+    '#c05770',
+    '#9e5132',
+    -100,
+    0,
+    150
+)
+
+makeTree(
+    illustration,
+    '#c05770',
+    '#9e5132',
+    -100,
+    0,
+    -200
+)
+
+makeTree(
+    illustration,
+    '#fdc748',
+    '#9e5132',
+    -300,
+    0,
+    -200
+)
 
 function animate() {
+    if (isSpinning) {
+        illustration.rotate.y += 0.01
+    }
+
     illustration.updateRenderGraph()
     requestAnimationFrame(animate)
 }
