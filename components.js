@@ -92,7 +92,8 @@ export function Tree(parent, colorName, x, y, z) {
     const colors = {
         'red': '#900C3F',
         'pink': '#c05770',
-        'yellow': '#fdc748'
+        'yellow': '#fdc748',
+        'green': '#5e6342' 
     }
 
     const color = colors[colorName] ?? colors['red']
