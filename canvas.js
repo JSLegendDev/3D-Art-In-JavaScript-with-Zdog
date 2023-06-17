@@ -41,37 +41,37 @@ House(
     0
 )
 
-Tree(
-    illustration,
-    'red',
-    0,
-    0,
-    100
-)
+let treesData = [
+    {color: 'red', x: 0, y: 0, z: 100},
+    {color: 'pink', x: -100, y: 0, z: 150},
+    {color: 'pink', x: -100, y: 0, z: -200},
+    {color: 'yellow', x: -300, y: 0, z: -200},
+    {color: 'yellow', x: -300, y: 0, z: -200},
+    {color: 'yellow', x: -230, y: 0, z: -350},
+    {color: 'yellow', x: -150, y: 0, z: -320},
+    {color: 'yellow', x: 300, y: 0, z: -200},
+    {color: 'yellow', x: 350, y: 0, z: 150},
+    {color: 'yellow', x: -150, y: 0, z: -320},
+    {color: 'yellow', x: 80, y: 0, z: -200},
+    {color: 'yellow', x: -230, y: 0, z: -100},
+    {color: 'yellow', x: -50, y: 0, z: -320},
+    {color: 'yellow', x: 300, y: 0, z: -130},
+    {color: 'red', x: 220, y: 0, z: 120},
+    {color: 'pink', x: 10, y: 0, z: -100},
+    {color: 'red', x: -30, y: 0, z: 150},
+    {color: 'pink', x: 50, y: 0, z: -320},
+    {color: 'red', x: 10, y: 0, z: -570},
+]
 
-Tree(
-    illustration,
-    'pink',
-    -100,
-    0,
-    150
-)
-
-Tree(
-    illustration,
-    'pink',
-    -100,
-    0,
-    -200
-)
-
-Tree(
-    illustration,
-    'yellow',
-    -300,
-    0,
-    -200
-)
+for (const tree of treesData) {
+    Tree(
+        illustration,
+        tree.color,
+        tree.x,
+        tree.y,
+        tree.z
+    )
+}
 
 function animate() {
     if (isSpinning) {
