@@ -11,6 +11,10 @@ let illustration = new Zdog.Illustration({
     resize: 'fullscreen'
 })
 
+addEventListener('dblclick', () => {
+    isSpinning = true
+})
+
 let housesData = [
     {color: 'turquoise', angle: 0, x: 0, y: 0, z: 0},
     {color: 'red', angle: -TAU/4, x: -200, y: 0, z: 0},

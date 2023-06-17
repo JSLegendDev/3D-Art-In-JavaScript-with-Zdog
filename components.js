@@ -114,7 +114,7 @@ export function Tree(parent, colorName, x, y, z) {
         'green': '#5e6342' 
     }
 
-    const color = colors[colorName] ?? colors['red']
+    const color = colors[colorName]
     
     let tree = new Zdog.Anchor({
         addTo: parent,
