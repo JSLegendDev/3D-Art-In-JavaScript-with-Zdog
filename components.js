@@ -2,13 +2,31 @@ export const TAU = Zdog.TAU
 
 export function House(
     parent, 
-    lightColor, 
-    darkColor, 
+    color,
     angle,
     x,
     y,
     z
 ) {
+
+    let colors = {
+        'turquoise': {
+            lightColor: '#8FD4B1',
+            darkColor: '#41918F'
+        },
+        'red': {
+            lightColor: '#F67F8C',
+            darkColor: '#C33A5A'
+        },
+        'orange': {
+            lightColor: '#F88B33',
+            darkColor: '#C4521B'
+        }
+    }
+
+    const lightColor = colors[color].lightColor
+    const darkColor = colors[color].darkColor
+
     let house = new Zdog.Anchor({
         addTo: parent,
         rotate: {y: angle},
