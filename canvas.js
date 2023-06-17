@@ -7,7 +7,8 @@ let illustration = new Zdog.Illustration({
     rotate: {x: -TAU/10, y: TAU/3},
     onDragStart: function() {
         isSpinning = false;
-    }
+    },
+    resize: 'fullscreen'
 })
 
 // green house
